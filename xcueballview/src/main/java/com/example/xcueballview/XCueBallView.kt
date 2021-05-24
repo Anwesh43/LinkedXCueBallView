@@ -189,4 +189,27 @@ class XCueBallView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : XCueBallView) {
+
+        private val animator : Animator = Animator(view)
+        private val xcueBall : XCueBall = XCueBall(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            xcueBall.draw(canvas, paint)
+            animator.animate {
+                xcueBall.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            xcueBall.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
