@@ -44,11 +44,11 @@ fun Canvas.drawXCueBall(scale : Float, w : Float, h : Float, paint : Paint) {
         drawLine(
             -w / 2,
             h / 2,
-            -w / 2 + (w / 2) * sf2,
-            -h / 2 + (h / 2) * sf2,
+            -w / 2 + (w / 2 - r * Math.cos(Math.PI / 4).toFloat()) * sf2,
+            h / 2 - (h / 2  - r * Math.sin(Math.PI / 4).toFloat()) * sf2,
             paint
         )
-        drawCircle((w / 2) * sf3, - (h / 2) * sf3 + (-h / 2 - r) * (1 - sf1), r, paint)
+        drawCircle((w / 2 - r) * sf3, - (h / 2 - r) * sf3 + (-h / 2 - r) * (1 - sf1), r, paint)
         restore()
     }
     restore()
