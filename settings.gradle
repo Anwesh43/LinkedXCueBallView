@@ -1,0 +1,3 @@
+include ':xcueballview'
+include ':app'
+rootProject.name = "LinkedXCueBallView"
